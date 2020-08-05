@@ -1,0 +1,4 @@
+/send ibss.img4
+/send ibec.img4
+/send diag.img4
+go
