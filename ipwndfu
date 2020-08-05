@@ -32,7 +32,7 @@ def print_help():
 
 if __name__ == '__main__':
     try:
-        advanced = ['demote', 'patch', 'dump=', 'hexdump=', 'dump-rom', 'dump-nor=', 'flash-nor=', '24kpwn', 'remove-24kpwn', 'remove-alloc8', 'decrypt-gid=', 'encrypt-gid=', 'decrypt-uid=', 'encrypt-uid=']
+        advanced = ['demote', 'boot', 'dump=', 'hexdump=', 'dump-rom', 'dump-nor=', 'flash-nor=', '24kpwn', 'remove-24kpwn', 'remove-alloc8', 'decrypt-gid=', 'encrypt-gid=', 'decrypt-uid=', 'encrypt-uid=']
         opts, args = getopt.getopt(sys.argv[1:], 'pxf:', advanced)
     except getopt.GetoptError:
         print 'ERROR: Invalid arguments provided.'
@@ -375,7 +375,7 @@ if __name__ == '__main__':
                 print 'Encrypting with device-specific UID key.'
                 print device.aes_hex(arg, AES_ENCRYPT, AES_UID_KEY)
 
-        if opt == '--patch':
+        if opt == '--boot':
             device = dfu.acquire_device()
             serial_number = device.serial_number
             dfu.release_device(device)
@@ -416,4 +416,3 @@ if __name__ == '__main__':
                 device.write_memory(DFU_BOOL, '\x01')
                 device.execute(0, DFU_NOTIFY, DFU_STATE)
                 print 'Booted.'
-        
