@@ -39,7 +39,7 @@ class DevicePlatform:
       self.dfu_load_base       = 0x800000000
       self.recovery_image_base = 0x1800B0000
       self.recovery_load_base  = 0x800000000
-    if self.cpid in [0x8015]:
+    if self.cpid in [0x8012, 0x8015]:
       self.dfu_image_base      = 0x18001C000
       self.dfu_load_base       = 0x800000000
       self.recovery_image_base = 0x18001C000
